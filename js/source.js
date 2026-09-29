@@ -99,7 +99,7 @@ $(function () {
     // Do not modify the JS objects above. You will write your code below.
     // *********************************************************************
 
-//requirement4
+//requirement3
     $('#username').append(username);
     $('.revenue-amt').append(revenueAmt);
     $('#customer-num').append(customerNum);
