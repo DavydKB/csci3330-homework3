@@ -99,9 +99,83 @@ $(function () {
     // Do not modify the JS objects above. You will write your code below.
     // *********************************************************************
 
+//requirement4
+    $('#username').append(username);
+    $('.revenue-amt').append(revenueAmt);
+    $('#customer-num').append(customerNum);
+    $('#orders-amt').append(ordersAmt);
+    $('#issues-amt').append(issuesAmt);
+    $('#notification-num').append(notifAmt);
 
+    sales.forEach(sales =>{
+        $('#salesTableBody').append(
+        `<tr>
+            <td>${sales.product}</td>
+            <td>${sales.quantity}</td>
+            <td>${sales.revenue}</td>
+        </tr>`
+    );
+    });
 
+    activities.forEach(activities =>{
+        $('#activity-list').append(`<li>${activities.message}</li>`);
+    });
+
+    customers.forEach(customers =>{
+        $('#customerTableBody').append(
+            `<tr>
+                <td>${customers.name}</td>
+                <td>${customers.email}</td>
+                <td>${customers.status}</td>
+                <td>${customers.joined}</td>
+            </tr>`
+        );
+    });
+
+    messages.forEach(messages =>{
+        $('#system-status-list').append(`<li>${messages.messsage}</li>`)
+    });
        
+    notifications.forEach(notifications =>{
+        $('#notification-list').append(`<li>${notifications.messsage}</li>`)
+    });
+    
+    tasks.forEach(tasks =>{
+        $('#tasks-list').append(`<li>${tasks.messsage}</li>`);
+    });
 
+//requirement4
+    $('button').button();
+    $('#dashboardTabs').tabs();
+    $('#customerDialog').dialog({
+        autoOpen: false,
+        modal: true,
+        width: 450,
+        buttons:{
+        "Create Customer": function (){
+            var name = $("#customerName").val();
+            var email = $("#customerEmail").val();
+            if (!name || !email) {
+                alert("Please enter a name and email.");
+                return;
+            }
+            alert("Customer created: " + name);
+            $(this).dialog("close");
+        },
+        "Cancel": function () {
+            $(this).dialog("close");
+        }}
+    });
+
+    $('#accordion').accordion({
+        collapsible: true,
+        heightStyle: "content"
+    });
+
+    $('#newCustomerButton').on('click', function(){
+        $('#customerDialog').dialog("open");
+    });
+
+    $('#customerDate').datepicker();
 
     });
